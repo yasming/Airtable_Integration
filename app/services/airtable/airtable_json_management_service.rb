@@ -6,4 +6,8 @@ class Airtable::AirtableJsonManagementService
   def return_all_records
     @records
   end
+
+  def get_associated_record_to_key(key)
+    @records.select{|record| record['key'] == key}&.first
+  end
 end

@@ -22,7 +22,7 @@ module CopyProject
         unless File.directory?(default_folder)
           FileUtils.mkdir_p(default_folder)
         end
-        File.write(default_folder + 'airtable-data.json', [{:key=>"intro.created_at", :copy=>"Intro created on {created_at, datetime}"}].to_json)
+        File.write(default_folder + 'airtable-data.json', [{key:"intro.created_at",copy:"Intro created on {created_at, datetime}"},{key:"intro.updated_at",copy:"Intro updated on {updated_at, datetime}"},{key:"greeting",copy:"Hi {name}, welcome to {app}!"}].to_json)
       end
     end
     config.api_only = true

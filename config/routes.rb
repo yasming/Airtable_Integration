@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace 'api' do
     namespace 'v1' do
-      resources :copy
+      get 'copy', action: :index, controller: 'copy'
+      get 'copy/:key', action: :show, controller: 'copy', :constraints => { :key => /[^\/]+/ }
     end
   end
 end
