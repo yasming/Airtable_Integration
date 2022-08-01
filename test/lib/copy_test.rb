@@ -12,8 +12,9 @@ class CopyTest < ActiveSupport::TestCase
     mock_service       = OpenStruct.new
     mock_service.get_all_table_records_json = [{:key=>"intro.created_at", :copy=>"Intro created on {created_at, datetime}"}].to_json
 
-    Airtable::AirtableService.stub :new, mock_service do
+    Airtable::AirtableIntegrationService.stub :new, mock_service do
       Airtable::Client.stub :new, mock_request do
+        FileUtils.rm_rf("./storage/airtable/test/") if Dir.exist?("./storage/airtable/test/")
         Rake::Task["copy:copy_from_airtable_to_json"].invoke('./storage/airtable/test/')
         file_added   = File.read('./storage/airtable/test/airtable-data.json')
         file_decoded = ActiveSupport::JSON.decode(file_added)

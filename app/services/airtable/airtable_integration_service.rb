@@ -1,4 +1,4 @@
-class Airtable::AirtableService
+class Airtable::AirtableIntegrationService
 
   def initialize(api_key, project_id, table_name)
     airtable_client = Airtable::Client.new(api_key)
