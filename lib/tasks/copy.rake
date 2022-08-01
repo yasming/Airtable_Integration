@@ -7,7 +7,7 @@ namespace :copy do
         FileUtils.mkdir_p(folder)
       end
       airtable_service = Airtable::AirtableIntegrationService.new(ENV["AIRTABLE_API_KEY"], ENV["PROJECT_ID"], ENV["TABLE_NAME"])
-      File.write(folder+'airtable-data.json', airtable_service.get_all_table_records_json)
+      Airtable::AirtableJsonManagementService.insert_json_records_on_a_file(folder, airtable_service.get_all_table_records_json)
       puts '-- Airtable records added to json --'
     rescue => e
       puts '-- ERROR --'

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       get 'copy', action: :index, controller: 'copy'
+      get 'copy/refresh', action: :refresh, controller: 'copy'
       get 'copy/:key', action: :show, controller: 'copy', :constraints => { :key => /[^\/]+/ }
     end
   end
