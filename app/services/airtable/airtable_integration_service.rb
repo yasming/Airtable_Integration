@@ -1,15 +1,9 @@
 class Airtable::AirtableIntegrationService
-
   def initialize(api_key, project_id, table_name)
-    airtable_client = Airtable::Client.new(api_key)
-    @table          = airtable_client.table(project_id, table_name)
-  end
-
-  def show_all_table_records
-    @table.records
+    @table = HTTParty.get(ENV['AIRTABLE_INTEGRATION_URL']+project_id+'/'+table_name, :headers => {Authorization: "Bearer #{api_key}"})
   end
 
   def get_all_table_records_json
-    @table.records&.map{|u| {key: u[:key], copy: u[:copy]}}.to_json
+    @table['records']&.map{|record| {key: record['fields']['Key'], copy: record['fields']['Copy'], created_time: record['createdTime']}}.to_json
   end
 end

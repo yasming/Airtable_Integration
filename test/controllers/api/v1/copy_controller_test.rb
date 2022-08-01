@@ -1,10 +1,16 @@
 require "test_helper"
+require 'rake'
 
 class Api::V1::CopyControllerTest < ActionDispatch::IntegrationTest
+
+  def teardown
+    Airtable::AirtableJsonManagementService.insert_json_records_on_a_file('./storage/airtable/test/', [{key: "intro.created_at",copy: "Intro created on {created_at, datetime}", "created_time":"2022-07-31T21:55:22.000Z"},{key:"intro.updated_at",copy:"Intro updated on {updated_at, datetime}", "created_time":"2022-07-31T21:55:22.000Z"}, {key: "time", copy: "It is {time, datetime}", "created_time":"2022-07-31T21:55:22.000Z" }, {key:"greeting",copy:"Hi {name}, welcome to {app}!", "created_time":"2022-07-31T21:55:22.000Z"}].to_json)
+  end
+
   test "it should return all records from airtable-data.json file" do
     get '/api/v1/copy'
     assert_response :success
-    assert_equal [{"key" =>"intro.created_at", "copy" =>"Intro created on {created_at, datetime}"}, {"key" =>"intro.updated_at", "copy" =>"Intro updated on {updated_at, datetime}"}, {"key" =>"time", "copy" =>"It is {time, datetime}"}, {"key" =>"greeting", "copy" =>"Hi {name}, welcome to {app}!"}], response.parsed_body['data']
+    assert_equal [{"key" =>"intro.created_at", "copy" =>"Intro created on {created_at, datetime}", "created_time" => "2022-07-31T21:55:22.000Z"}, {"key" =>"intro.updated_at", "copy" =>"Intro updated on {updated_at, datetime}", "created_time" => "2022-07-31T21:55:22.000Z"}, {"key" => "time", "copy" => "It is {time, datetime}", "created_time" => "2022-07-31T21:55:22.000Z"}, {"key" => "greeting", "copy" => "Hi {name}, welcome to {app}!", "created_time" => "2022-07-31T21:55:22.000Z"}], response.parsed_body['data']
     assert_equal 4, response.parsed_body['data'].count
   end
 
@@ -52,6 +58,5 @@ class Api::V1::CopyControllerTest < ActionDispatch::IntegrationTest
         assert_equal 'Hi {name}, welcome to {app}!', file_decoded[2]['copy']
       end
     end
-
   end
 end

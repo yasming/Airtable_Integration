@@ -68,8 +68,6 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    airtable (0.0.9)
-      httparty
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
@@ -228,12 +226,12 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
-  airtable
   bootsnap
   byebug
   capybara
   debug
   dotenv-rails
+  httparty
   importmap-rails
   jbuilder
   puma (~> 5.0)
