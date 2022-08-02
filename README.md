@@ -44,3 +44,12 @@
 - ```/copy/{key}``` API endpoint that returns the correct value associated with the key, ```for example:```
 > ```/copy/greeting?name=John&app=Bridge``` should return ```{value: 'Hi John, welcome to Bridge!'}``` 
 - ``/copy/refresh`` API endpoint that fetches latest copy data from airtable and updates the copy data without needing to re-run the rake task & restart the backend server
+
+## Postman Collection
+> https://www.getpostman.com/collections/1ebc0f8e7b7e51af66d0
+
+## Working Demo
+> https://www.loom.com/share/75e4b0cb7b70455fbdb3ce3da1240b78
+
+# Walk through of the code 
+> https://www.loom.com/share/6ba56717c45543a89f09268d5f500db8
