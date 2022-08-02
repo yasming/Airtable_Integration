@@ -51,5 +51,5 @@
 ## Working Demo
 > https://www.loom.com/share/75e4b0cb7b70455fbdb3ce3da1240b78
 
-## Walk through of the code 
+## Walkthrough of the code 
 > https://www.loom.com/share/6ba56717c45543a89f09268d5f500db8
