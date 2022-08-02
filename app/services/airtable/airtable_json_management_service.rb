@@ -1,7 +1,7 @@
 class Airtable::AirtableJsonManagementService
   attr_reader :folder
-  def initialize
-    @folder  = Rails.configuration.x.folder
+  def initialize(folder = Rails.configuration.x.folder)
+    @folder  = folder
     @records = ActiveSupport::JSON.decode(File.read(@folder + 'airtable-data.json'))
   end
 
