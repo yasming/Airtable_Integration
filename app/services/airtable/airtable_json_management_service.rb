@@ -5,7 +5,10 @@ class Airtable::AirtableJsonManagementService
     @records = ActiveSupport::JSON.decode(File.read(@folder + 'airtable-data.json'))
   end
 
-  def return_all_records
+  def return_all_records(since)
+    if since
+      return @records.select{|record| record['created_time'].to_datetime.to_i >= since.to_i}
+    end
     @records
   end
 

@@ -2,7 +2,7 @@ class Api::V1::CopyController < ApplicationController
   include ApplicationHelper
   before_action :set_airtable_json_management_service, only: [:index, :show, :refresh]
   def index
-    render json: {data: @airtable_json_management_service.return_all_records}
+    render json: {data: @airtable_json_management_service.return_all_records(params[:since])}
   end
 
   def show

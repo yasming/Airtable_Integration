@@ -22,7 +22,7 @@ module CopyProject
         unless File.directory?(default_folder)
           FileUtils.mkdir_p(default_folder)
         end
-        File.write(default_folder + 'airtable-data.json', [{key:"intro.created_at",copy:"Intro created on {created_at, datetime}", "created_time":"2022-07-31T21:55:22.000Z"},{key:"intro.updated_at",copy:"Intro updated on {updated_at, datetime}", "created_time":"2022-07-31T21:55:22.000Z"},{key: "time", copy: "It is {time, datetime}", "created_time":"2022-07-31T21:55:22.000Z"},{key:"greeting",copy:"Hi {name}, welcome to {app}!", "created_time":"2022-07-31T21:55:22.000Z"}].to_json)
+        File.write(default_folder + 'airtable-data.json', [{key:"intro.created_at",copy:"Intro created on {created_at, datetime}", "created_time":"2022-07-31T21:55:22.000Z"},{key:"intro.updated_at",copy:"Intro updated on {updated_at, datetime}", "created_time":"2022-07-31T21:55:22.000Z"},{key: "time", copy: "It is {time, datetime}", "created_time":"2022-08-01T19:19:38.000Z"},{key:"greeting",copy:"Hi {name}, welcome to {app}!", "created_time":"2022-07-31T21:55:22.000Z"}].to_json)
       end
     end
     config.api_only = true
